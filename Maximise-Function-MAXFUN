@@ -1,0 +1,43 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.math.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner s = new Scanner(System.in);
+		int TC = s.nextInt();
+		while(TC-->0){
+		    long n = s.nextLong();
+		    long[] a = new long[(int)n];
+		    for(int i=0;i<a.length;i++){
+		        a[i] = s.nextLong();
+		    }
+		    
+		    long small = a[0];
+		    for(int i=0;i<n;i++){
+		        if(small>a[i]){
+		            small = a[i];
+		        }
+		    }
+		    //System.out.println(small);
+		    long big=a[0];
+		    for(int i=0;i<n;i++){
+		        if(big<a[i]){
+		            big = a[i];
+		        }
+		    }
+		    //System.out.println(big);
+		    
+		    long ans = 2*(big-small);
+		    System.out.println(ans);
+		}// your code goes here
+	}
+	
+	
+}
