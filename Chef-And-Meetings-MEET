@@ -1,0 +1,79 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner s = new Scanner(System.in);
+		int TC = s.nextInt();
+		s.nextLine();
+		while(TC-->0){
+		    String p = s.nextLine();
+		    char[] parr = p.toCharArray();
+		    int ph = getHours(parr,0);
+		    int pm = getMinutes(parr,0);
+		  //  System.out.println(ph+" "+pm);
+		  //  System.out.println(" ----------- ");
+		    
+		    int n = s.nextInt();
+		    s.nextLine();
+		    
+		    for(int i=0;i<n;i++){
+		        String ans = "";
+		        String str = s.nextLine();
+		        char[] starr = str.toCharArray();
+		        int fh1 = getHours(starr,0);
+		        int fm1 = getMinutes(starr,0);
+		        int fh2 = getHours(starr,9);
+		        int fm2 = getMinutes(starr,9);
+		      //  System.out.println(" ----------- ");
+		      //  System.out.println(fh1+" "+fm1);
+		      //  System.out.println(" ----------- ");
+		      //  System.out.println(fh2+" "+fm2);
+		        
+		        if(fh1>ph || fh2<ph) ans=ans+"0";
+		        else if(fh1==ph && fm1>pm) ans=ans+"0";
+		        else if(fh2 == ph && fm2< pm) ans=ans+"0";
+                else ans=ans+"1";
+                
+		       System.out.print(ans);
+
+		    }
+		    System.out.println();
+		    //System.out.println(ph+" "+pm);
+		}// your code goes here
+	}
+	public static int getHours(char[] p,int t){
+	    int fd = Integer.parseInt(String.valueOf(p[t+0]));
+	    int ld = Integer.parseInt(String.valueOf(p[t+1]));
+	    
+	    int h = fd*10 + ld;
+	    if(p[t+6]=='A'){
+	        if(h==12)
+	           h = h-12;
+	    }
+	    
+	    if(p[t+6]=='P'){
+	        if(h!=12)
+	           h=h+12;
+	        
+	        
+	    }
+	    
+	    
+	    //System.out.println(h);
+	    return h;
+	}
+	public static int getMinutes(char[] p,int t){
+	    int fd = Integer.parseInt(String.valueOf(p[t+3]));
+	    int ld = Integer.parseInt(String.valueOf(p[t+4]));
+	    
+	    int m = fd*10 + ld;
+	    return m;
+	}
+}
